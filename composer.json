@@ -4,8 +4,8 @@
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/tairesh/mesages-wall/issues?state=open",
-        "source": "https://github.com/tairesh/mesages-wall"
+        "issues": "https://github.com/tairesh/messages-wall/issues?state=open",
+        "source": "https://github.com/tairesh/messages-wall"
     },
     "minimum-stability": "dev",
     "require": {
