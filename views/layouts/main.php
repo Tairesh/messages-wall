@@ -40,8 +40,10 @@ AppAsset::register($this);
         <?php endif ?>
     </div>
 </div>
-        <?= $content ?>
-
+<div class="row-fluid">
+    <?= $content ?>
+</div>
+    
 <?php $this->endBody() ?>
 </body>
 </html>
