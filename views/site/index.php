@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\components\MessagesList;
 
 $this->title = 'Стена сообщений';
 
@@ -30,7 +31,7 @@ $this->title = 'Стена сообщений';
         </div>
         <?php endif ?>
 
-        <?=$form->field($model, 'text')->textarea(['placeholder' => 'Ваше сообщение...', 'style' => 'width:100%; height: 50px'])?>
+        <?=$form->field($model, 'text')->textarea(['placeholder' => 'Ваше сообщение...', 'style' => 'width:100%; height: 50px', 'autofocus' => true])?>
  
         <div class="control-group">
             <?= Html::submitButton('Отправить сообщение', ['class' => 'btn btn-primary', 'name' => 'submit-button']) ?>
@@ -39,5 +40,7 @@ $this->title = 'Стена сообщений';
     <?php ActiveForm::end(); ?>
     
     <?php endif ?>
-
+    
+    <?=MessagesList::widget()?>
+    
 </div>
