@@ -11,6 +11,12 @@ $this->title = 'Авторизация';
 ?>
 <div class="span3 offset4">
 
+    <?php if (Yii::$app->session->getFlash('loginFailed')): ?>
+    <div class="alert alert-error">
+        Вход в систему с указанными данными невозможен 
+    </div>
+    <?php endif ?>
+    
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'form-horizontal'],

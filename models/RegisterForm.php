@@ -53,7 +53,7 @@ class RegisterForm extends Model
             $this->_user = new User;
             $this->_user->load($this->attributes, '');
             if ($this->_user->save()) {
-                return Yii::$app->user->login($this->_user, 0);
+                return true;
             } else {
                 $this->addErrors($this->_user->getErrors());
             }

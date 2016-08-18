@@ -113,7 +113,7 @@ class SiteController extends Controller
         $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($model->register()) {
-                return $this->goBack();
+                return $this->render('register-success');
             } else {
                 Yii::$app->session->setFlash('registerFailed');
             }
