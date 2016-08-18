@@ -34,7 +34,7 @@ AppAsset::register($this);
         
         <?php if (!Yii::$app->user->isGuest): ?>
         <ul class="nav pull-right">
-            <li><a href="javascript:void(0);"><?=Yii::$app->user->identity->username?></a></li>
+            <li><a href="javascript:void(0);"><?=Html::encode(Yii::$app->user->identity->username)?></a></li>
             <li><?=Html::a('Выход', ['site/logout'], ['data-method' => 'POST'])?></li>
         </ul>
         <?php endif ?>

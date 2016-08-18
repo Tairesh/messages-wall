@@ -10,13 +10,21 @@ use app\components\MessagesList;
 
 $this->title = 'Стена сообщений';
 
+$this->registerJs("
+    $('#message-form-text').keydown(function (e) {
+        if (e.ctrlKey && e.keyCode == 13) {
+            $('#message-submit-form').submit();
+        }
+    });
+");
+
 ?>
 <div class="span8 offset2">
 
     <?php if (!Yii::$app->user->isGuest): ?>
     
     <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
+        'id' => 'message-submit-form',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
             'template' => "{input}",
@@ -31,7 +39,7 @@ $this->title = 'Стена сообщений';
         </div>
         <?php endif ?>
 
-        <?=$form->field($model, 'text')->textarea(['placeholder' => 'Ваше сообщение...', 'style' => 'width:100%; height: 50px', 'autofocus' => true])?>
+        <?=$form->field($model, 'text')->textarea(['placeholder' => 'Ваше сообщение...', 'style' => 'width:100%; height: 50px', 'autofocus' => true, 'id' => 'message-form-text'])?>
  
         <div class="control-group">
             <?= Html::submitButton('Отправить сообщение', ['class' => 'btn btn-primary', 'name' => 'submit-button']) ?>

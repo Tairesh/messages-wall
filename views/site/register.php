@@ -12,7 +12,7 @@ $this->title = 'Регистрация';
 ?>
 <div class="span8 offset4">
     <?php $form = ActiveForm::begin([
-            'id' => 'login-form',
+            'id' => 'register-form',
             'options' => ['class' => 'form-horizontal'],
             'fieldConfig' => [
                 'template' => "{input}\n<span class=\"help-inline error\">{error}</span>",
