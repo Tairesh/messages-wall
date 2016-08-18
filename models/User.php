@@ -78,5 +78,33 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return null;
     }
+    
+    /**
+     * 
+     * @param string $username
+     * @return User
+     */
+    public static function findByUsername($username)
+    {
+        return static::find()->where(['username' => $username])->one();
+    }
+    
+    /**
+     * Пароли хэшируются и проверяются с помощью стандартного API bCrypt (работает с PHP 5.5+)
+     * @param string $password
+     * @return boolean
+     */
+    public function validatePassword($password)
+    {
+        return password_verify($password, $this->password);
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->password = password_hash($this->password, PASSWORD_BCRYPT);
+        }
+        return parent::beforeSave($insert);
+    }
 
 }

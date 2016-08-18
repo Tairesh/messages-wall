@@ -53,3 +53,5 @@ vendor/*
 database/*
 
 composer.lock
+
+nbproject/private/*
