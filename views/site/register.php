@@ -30,7 +30,7 @@ $this->title = 'Регистрация';
     <?= $form->field($model, 'passwordConfirm')->passwordInput(['placeholder' => 'Повторите пароль']) ?>
 
     <div class="control-group">
-        <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+        <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'register-button']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>

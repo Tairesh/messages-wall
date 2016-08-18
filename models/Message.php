@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 /**
  * This is the model class for table "messages".
  *
@@ -30,7 +32,7 @@ class Message extends \yii\db\ActiveRecord
             [['userId', 'text'], 'required'],
             [['userId'], 'integer'],
             [['text'], 'string', 'min' => 1],
-            [['userId'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['userId' => 'id']],
+            [['userId'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userId' => 'id']],
         ];
     }
 
@@ -52,5 +54,14 @@ class Message extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'userId']);
+    }
+    
+    public function beforeValidate()
+    {
+        if (!$this->userId) {
+            $this->userId = Yii::$app->user->id;
+        }
+        
+        return parent::beforeValidate();
     }
 }

@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use app\models\Message;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 
@@ -60,7 +61,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Message();        
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                $model = new Message();
+            } else {
+                Yii::$app->session->setFlash('messageSubmitFailed');
+            }
+        }
+        
+        return $this->render('index', [
+            'model' => $model
+        ]);
     }
 
     /**
